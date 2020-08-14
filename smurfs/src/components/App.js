@@ -16,7 +16,7 @@ const App = (props) => {
   
     return (
       <div className="App">
-        <h1>Smurfbook</h1>
+        <h1>Smurf Village</h1>
         {props.isLoading ? <h4>Loading the Smurfs...</h4> : null}
             {props.error ? (
                 <h4 className='danger'>
@@ -30,7 +30,9 @@ const App = (props) => {
           />
         ))}
         
-        <AddSmurfForm/>
+        <AddSmurfForm
+          postSmurf ={postSmurf}
+        />
       </div>
     );
   

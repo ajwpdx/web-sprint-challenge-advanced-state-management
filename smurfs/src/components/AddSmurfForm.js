@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
+
+import { connect } from 'react-redux'
 import { postSmurf } from '../utils/actions'
+
 
 const initialformValues = {
     name: '',
@@ -7,7 +10,7 @@ const initialformValues = {
     height: ''
 }
 
-export const AddSmurfForm = () => {
+export const AddSmurfForm = (props) => {
     const [formValues, setFormValues] = useState(initialformValues)
 
     const handleFormChange = e => {
@@ -16,7 +19,14 @@ export const AddSmurfForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        postSmurf(formValues)
+        const newSmurf = {
+            name:'smurf',
+            age:'30',
+            height:'6cm',
+            id: "2"
+        }
+        console.log(newSmurf)
+        props.postSmurf(newSmurf)
         setFormValues(initialformValues)
     }
 
@@ -55,3 +65,5 @@ export const AddSmurfForm = () => {
             </form>
     )
 }
+
+export default connect(null, {postSmurf})(AddSmurfForm);

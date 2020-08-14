@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { connect } from 'react-redux'
+
 
 export const FETCH_SMURF_START = 'FETCH_SMURF_START'
 export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS'
@@ -18,13 +20,14 @@ export const fetchSmurfs = () => dispatch => {
 
 export const postSmurf = (smurf) => dispatch => {
     console.log(smurf)
-    // const newSmurf = { name: smurf.name, age: smurf.age, height: smurfHeight, id: Math.floor(Math.random() * 1000) + 1 }
-    // axios
-    //     .post('http://localhost:3333/smurfs', {
-    //         ...smurf
-    //     })
-
-    
+    axios
+        .post('http://localhost:3333/smurfs', {
+            ...smurf
+        })
+        .then( res => {
+            console.log(res)
+        })
+        .catch( err => console.log(err))
 
     dispatch({ type: POST_SMURF, payload: smurf})
 }
