@@ -3,3 +3,31 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+h2 {
+  color: white
+}
+
+p {
+  color:white;
+}
+
+.smurf-card {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  background-color: blue;
+  border: 10px solid lightblue; 
+  margin: 3%;
+  border-radius: 10px;
+}
+
+.smurf-card label {
+  padding: 20px;
+}
+
+.smurf-card button {
+  margin: 20px auto;
+  width: 250px;
+  background-color: lightblue;
+}
