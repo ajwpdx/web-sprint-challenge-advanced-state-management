@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { postSmurf } from '../utils/actions'
 
 const initialformValues = {
     name: '',
@@ -13,8 +14,14 @@ export const AddSmurfForm = () => {
         setFormValues(e.target.value)
     }
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        postSmurf(formValues)
+        setFormValues(initialformValues)
+    }
+
     return (  
-            <form className = 'smurf-card'>
+            <form className = 'smurf-card' onSubmit={handleSubmit}>
             <h2>Add a Smurf</h2>
                 <label htmlFor='nameInput'>
                     <input

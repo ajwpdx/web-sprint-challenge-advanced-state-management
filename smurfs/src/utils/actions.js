@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const {FETCH_SMURF_START} = 'FETCH_SMURF_START'
-export const {FETCH_SMURF_SUCCESS} = 'FETCH_SMURF_SUCCESS'
-export const {POST_SMURF} = 'POST_SMURF'
+export const FETCH_SMURF_START = 'FETCH_SMURF_START'
+export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS'
+export const POST_SMURF = 'POST_SMURF'
 
 export const fetchSmurfs = () => dispatch => {
     dispatch({ type: FETCH_SMURF_START })
@@ -17,8 +17,14 @@ export const fetchSmurfs = () => dispatch => {
 }
 
 export const postSmurf = (smurf) => dispatch => {
+    console.log(smurf)
     // const newSmurf = { name: smurf.name, age: smurf.age, height: smurfHeight, id: Math.floor(Math.random() * 1000) + 1 }
-    console.log('post')
+    // axios
+    //     .post('http://localhost:3333/smurfs', {
+    //         ...smurf
+    //     })
+
+    
 
     dispatch({ type: POST_SMURF, payload: smurf})
 }
