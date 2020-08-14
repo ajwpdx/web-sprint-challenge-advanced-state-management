@@ -16,15 +16,16 @@ export const fetchSmurfs = () => dispatch => {
         .catch( err => console.log(err))
 }
 
-export const postSmurf = (smurf) => dispatch => {
+export const postSmurf = (input) => dispatch => {
+    console.log('postSmurf invoked >', input)
     axios
-        .post('http://localhost:3333/smurfs', {
-            ...smurf
-        })
-        .then( res => {
-            console.log(res)
-        })
-        .catch( err => console.log(err))
-
-    dispatch({ type: POST_SMURF, payload: smurf})
+    .post('http://localhost:3333/smurfs', 
+        input
+    )
+    .then( res => {
+        console.log(res)
+        dispatch({ type: POST_SMURF, payload: input })
+    })
+    .catch( err => console.log(err))
+    
 }

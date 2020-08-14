@@ -20,6 +20,7 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false,
                 smurfs: action.payload
             }
+
         case POST_SMURF:
             return {
                 ...state,

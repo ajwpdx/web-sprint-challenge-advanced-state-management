@@ -1,30 +1,17 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { postSmurf } from '../utils/actions'
 
-export const POST_SMURF = 'POST_SMURF'
+import { postSmurf } from '../utils/actions'
+import { connect } from 'react-redux'
 
 const initialformValues = {
     name: '',
     age: '',
-    height: ''
+    height: '',
+    id:Math.random()
 }
 
-export const postNewSmurf = (smurf) => dispatch => {
-    axios
-        .post('http://localhost:3333/smurfs', {
-            ...smurf
-        })
-        .then( res => {
-            console.log(res)
-        })
-        .catch( err => console.log(err))
-
-    dispatch({ type: POST_SMURF, payload: smurf})
-}
-
-
-export const AddSmurfForm = (props) => {
+const AddSmurfForm = (props) => {
     
     const [formValues, setFormValues] = useState(initialformValues)
 
@@ -40,22 +27,10 @@ export const AddSmurfForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        const newSmurf = {
-            ...formValues,
-            id: Math.floor(Math.random()*1000)+1
-        }
-
-        postNewSmurf(newSmurf)
+    
+        props.postSmurf(formValues)
+        
         setFormValues(initialformValues)
-
-        axios
-        .post('http://localhost:3333/smurfs', {
-            ...newSmurf
-        })
-        .then( res => {
-            console.log(res)
-        })
-        .catch( err => console.log(err))
     }
 
     return (  
@@ -93,3 +68,5 @@ export const AddSmurfForm = (props) => {
             </form>
     )
 }
+
+export default connect(null, {postSmurf})(AddSmurfForm)

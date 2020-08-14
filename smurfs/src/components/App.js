@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import  {SmurfCard}  from "./SmurfCard";
-import { AddSmurfForm } from "./AddSmurfForm";
+import  AddSmurfForm  from "./AddSmurfForm";
 
 import { connect } from 'react-redux'
-import { fetchSmurfs, postSmurf } from '../utils/actions'
+import { fetchSmurfs } from '../utils/actions'
 
 
 
@@ -31,7 +31,7 @@ const App = (props) => {
         ))}
         
         <AddSmurfForm
-          postSmurf ={postSmurf}
+          // postSmurf ={postSmurf()}
         />
       </div>
     );
@@ -46,4 +46,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurfs, postSmurf})(App);
+export default connect(mapStateToProps, {fetchSmurfs})(App);
